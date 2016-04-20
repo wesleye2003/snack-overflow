@@ -14,7 +14,7 @@ class Question < ActiveRecord::Base
 
   def add_tags(string_of_tags)
   	tag_array = string_of_tags.split(" ")
-  	tag_array.each do { |tag| self.tags.create(tag_name: tag) }
+  	tag_array.each { |tag| self.tags.create(tag_name: tag) }
   end
-  ###########METHOD TO DETERMINE PRIMARY TAGGING?################ 
+  ###########METHOD TO DETERMINE PRIMARY TAGGING?################
 end

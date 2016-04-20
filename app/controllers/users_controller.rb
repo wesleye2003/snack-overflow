@@ -17,9 +17,13 @@ get "/users/:id" do
 end
 
 get "/users/:id/questions" do
-
+  @user = User.find(params[:id])
+  @questions = @user.questions.all.order(created_at: :desc)
+  erb :'users/questions'
 end
 
 get "/users/:id/answers" do
-
+  @user = User.find(params[:id])
+  @answers = @user.answers.all.order(created_at: :desc)
+  erb :'users/answers'
 end
