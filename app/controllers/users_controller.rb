@@ -8,3 +8,18 @@ post "/users" do
     erb :"users/new"
   end
 end
+
+get "/users/:id" do
+  @user = User.find(params[:id])
+  @recent_questions = @user.questions.all.order(created_at: :desc).limit(3)
+  @recent_answers = @user.answers.all.order(created_at: :desc).limit(3)
+  erb :'users/profile'
+end
+
+get "/users/:id/questions" do
+
+end
+
+get "/users/:id/answers" do
+
+end

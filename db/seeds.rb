@@ -8,7 +8,7 @@ Vote.destroy_all
 Response.destroy_all
 
 5.times do
-  a = User.new(username: Faker::Internet.user_name)
+  a = User.new(username: Faker::StarWars.droid)
    a.password = "password"
    a.save
 end
