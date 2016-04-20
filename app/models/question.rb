@@ -11,5 +11,10 @@ class Question < ActiveRecord::Base
   def total_points
   	self.votes.sum(:value)
   end
+
+  def add_tags(string_of_tags)
+  	tag_array = string_of_tags.split(" ")
+  	tag_array.each do { |tag| self.tags.create(tag_name: tag) }
+  end
   ###########METHOD TO DETERMINE PRIMARY TAGGING?################ 
 end
