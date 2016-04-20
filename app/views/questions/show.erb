@@ -1,8 +1,8 @@
 <section>
 
-	<h2><%= @question.title %></h2>
+	<h2 class="page-title"><%= @question.title %></h2>
 
-	<h2>By <a href="/users/<%= @question.user.id%>"><%= @question.user.username %></a></h2>
+	<h2 class="author">By <a href="/users/<%= @question.user.id%>"><%= @question.user.username %></a></h2>
 
 	<div class="points">
 		Points: <%=@question.total_points%>
@@ -14,8 +14,20 @@
 
 	<div class="tags">
 		Tags: <% @question.tags.each do |tag| %>
-			<%= tag.tag_name + "," unless tag == @question.tags.last %>
-			<%= tag.tag_name if tag == @question.tags.last %>
+			<%= "<a href='/tags/#{tag.id}/questions'>#{tag.tag_name}</a>" + "," unless tag == @question.tags.last %>
+			<%= "<a href='/tags/#{tag.id}/questions'>#{tag.tag_name}</a>" if tag == @question.tags.last %>
+		<% end %>
+	</div>
+
+	<div class="question-comments">
+		<% if current_user %>
+			<a href="/questions/<%=@question.id%>/responses/new">Add a comment</a>
+		<% end %>
+	</div>
+
+	<div class="edit">
+		<% if current_user == @question.user %>
+			<a href="/questions/<%=@question.id%>/edit">Edit this post</a>
 		<% end %>
 	</div>
 
@@ -24,9 +36,20 @@
 	<% @question.answers.each do |answer| %>
 		<div class="answer">
 			<p>Points: <%=answer.total_points%></p>
-			<p><%=answer.body%></p>
-			<p>Answered by <a href="/users/<%=answer.user.id%>"><%=answer.user.username%></a>.</p>
+			<blockquote><%=answer.body%></blockquote>
+			<p class="author">Answered by <a href="/users/<%=answer.user.id%>"><%=answer.user.username%></a>.</p>
+			<div class="answer-comments">
+				<% if current_user %>
+					<a href="/answers/<%=answer.id%>/responses/new">Add a comment</a>
+				<% end %>
+			</div>
 			                   <hr>
 		</div>
 	<% end %>
+
+  <%if current_user%>
+  	<% if current_user %>
+			<a href="/questions/<%=@question.id%>/answers/new">Answer this question</a>
+		<% end %>
+  <% end %>
 </section>
