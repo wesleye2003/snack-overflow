@@ -1,0 +1,22 @@
+<h2 id="profile_name"><%= @user.username%></h2>
+<br>
+<div class="container questions">
+  <h3>Recently Asked Questions by <%=@user.username%></h3>
+  <ul class="recent_questions">
+    <% @recent_questions.each do |question| %>
+      <li class="question_title"><%=question.title%></li>
+      <li class="question_data"><%="Points: #{question.votes.count} | created on #{question.created_at}" %></li>
+    <%end%>
+  </ul>
+  <h5> View more questions asked by <%=@user.username%></h5>
+</div>
+<br>
+<div class="container questions">
+  <h3>Recently Answers by <%=@user.username%></h3>
+  <ul class="recent_answers">
+    <% @recent_answers.each do |answer| %>
+      <li class="answer_body"><%=answer.body%></li>
+      <li class="answer_data"><%="Points: #{answer.votes.count} | answered on #{answer.created_at} for <span>#{answer.question.title}</span>" %></li>
+    <%end%>
+  </ul>
+</div>

@@ -65,3 +65,24 @@ code {
     margin-left: -1em;
     overflow: auto;
 }
+.recent_questions li {
+    list-style-type: none;
+}
+.question_data {
+    font-size: 0.5em;
+}
+.recent_questions {
+    border: solid black 1px;
+}
+.recent_answers {
+    border: solid black 1px;
+}
+.answer_data {
+    font-size: 0.5em;
+}
+.recent_answers li {
+    list-style-type: none;
+}
+.answer_data span {
+    font-style: italic;
+}
