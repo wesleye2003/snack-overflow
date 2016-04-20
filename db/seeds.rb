@@ -19,7 +19,7 @@ b.save
 
 users_ids=User.all.pluck(:id)
 
-10.times do
+25.times do
   Question.find_or_create_by(title: Faker::StarWars.quote,
     body: Faker::Hipster.paragraph,
     user_id: users_ids.sample)
@@ -28,7 +28,7 @@ end
 question_ids = Question.all.pluck(:id)
 questions = Question.all.to_a
 
-100.times do
+150.times do
   Answer.find_or_create_by(body: Faker::Hacker.say_something_smart,
     user_id: users_ids.sample,
     question_id: question_ids.sample)
@@ -37,7 +37,7 @@ end
 answers = Answer.all.to_a
 
 25.times do
-  Tag.find_or_create_by(tag_name: Faker::Team.creature)
+  Tag.find_or_create_by(tag_name: Faker::StarWars.specie)
 end
 
 tag_ids = Tag.all.pluck(:id)

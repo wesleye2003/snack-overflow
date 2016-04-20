@@ -1,0 +1,15 @@
+<h2 id="profile_name"><a href="/users/<%=@user.id%>"><%= @user.username%></a></h2>
+<br>
+<div class="container questions">
+  <h3>Questions asked by <%=@user.username%></h3>
+  <ul class="recent_questions">
+    <% @questions.each do |question| %>
+      <li class="question_title"><a href="/questions/<%=question.id%>"><%=question.title%></a></li>
+      <li class="question_data"><%="Points: #{question.votes.count} | created on #{question.created_at} " %> Tags: <% question.tags.each do |tag| %>
+      <span class="tags1"><%= tag.tag_name + "," unless tag == question.tags.last %></span>
+      <span class="tags1"><%= tag.tag_name if tag == question.tags.last %></span>
+    <% end %></li>
+    <%end%>
+  </ul>
+</div>
+
