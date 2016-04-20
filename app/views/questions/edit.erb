@@ -7,11 +7,10 @@
   </div>
 <% end %>
 
-<form action="/questions/<%=@question.id%>/edit" method='post' id="edit_question">
+<form action="/questions/<%=@question.id%>" method='post' id="edit_question">
   <input type="hidden" name="_method" value="put">
 	<h2>Got something to add(or remove)?</h2>
-  Title: <input type='text' name='title' value="<%=@question.title%>">
-  Tags: <input type='text' name='tags' value="<%=@question.tags.to_a.join(" ")%>">
+  Title: <input type='text' name='q[title]' value="<%=@question.title%>">
   <input type='submit'>
 </form>
-<textarea name="body" form="edit_question"><%=@question.body%></textarea>
+<textarea name="q[body]" form="edit_question"><%=@question.body%></textarea>

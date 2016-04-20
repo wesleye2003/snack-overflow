@@ -22,6 +22,25 @@ post "/questions" do
 	end
 end
 
+get "/questions/:id/edit" do
+	@question = Question.find(params[:id])
+	if current_user == @question.user
+		erb :"questions/edit"
+	else
+		redirect "/"
+	end
+end
+
+put "/questions/:id" do
+	@question = Question.find(params[:id])
+	if current_user == @question.user
+		@question.update(params[:q])
+		erb :"questions/show"
+	else
+		redirect "/"
+	end
+end
+
 post "/questions/:id/answers" do
    @question = Question.find(params[:id])
    @question.answers.create({
