@@ -2,7 +2,7 @@
 
 	<h2><%= @question.title %></h2>
 
-	<h2>By <%= @question.user.username %></h2>
+	<h2>By <a href="/users/<%= @question.user.id%>"><%= @question.user.username %></a></h2>
 
 	<div class="points">
 		Points: <%=@question.total_points%>
@@ -25,7 +25,7 @@
 		<div class="answer">
 			<p>Points: <%=answer.total_points%></p>
 			<p><%=answer.body%></p>
-			<p>Answered by <%=answer.user.username%>.</p>
+			<p>Answered by <a href="/users/<%=answer.user.id%>"><%=answer.user.username%></a>.</p>
 			                   <hr>
 		</div>
 	<% end %>
