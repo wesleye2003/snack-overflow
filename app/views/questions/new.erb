@@ -1,0 +1,16 @@
+<% if @errors %>
+  <div class="wrong">
+    <p>There was a problem with the post:</p>
+    <% @errors.each do |error| %>
+      <%= error %>
+    <%end%>
+  </div>
+<% end %>
+
+<form action="/questions" method='post' id="new_question">
+	<h2>Login!</h2>
+  Title: <input type='text' name='title'>
+  Tags: <input type='text' name='tags'>
+  <input type='submit'>
+</form>
+<textarea name="body" form="new_question">Enter question text here...</textarea>
