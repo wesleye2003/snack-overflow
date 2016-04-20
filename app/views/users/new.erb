@@ -1,0 +1,23 @@
+<% if @errors %>
+  <div>
+    <p>There was a problem with your credentials:</p>
+      <% @errors.each do |error| %>
+        <p><%= error %></p>
+      <%end%>
+  </div>
+<% end %>
+
+<form action="/users" method='post'>
+
+  <h2>Create a new user!</h2>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Username</label>
+    <input type="text" id="exampleInputEmail1" placeholder="Your unique username" name='user[username]'>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+    <input type="password" id="exampleInputPassword1" placeholder="Password" name='user[password]'>
+  </div>
+
+  <button type="submit" class="btn btn-default">Submit</button>
+</form>
