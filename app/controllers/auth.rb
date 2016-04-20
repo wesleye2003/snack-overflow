@@ -9,3 +9,7 @@ end
 get '/signup' do
   
 end
+
+get '/logout' do
+	session[:user_id].delete
+end
