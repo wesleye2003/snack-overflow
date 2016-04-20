@@ -1,14 +1,31 @@
 <section>
-	<h2><%= @question.title %></h2>
-	<h2>By <%= @question.user.name %></h2>
 
-	<blockquote><%= @question.body %></blockquote>
+	<h2><%= @question.title %></h2>
+
+	<h2>By <%= @question.user.username %></h2>
+
+	<div class="points">
+		Points: <%=@question.total_points%>
+	</div>
+
+	<blockquote>
+		<%= @question.body %>
+	</blockquote>
+
+	<div class="tags">
+		Tags: <% @question.tags.each do |tag| %>
+			<%= tag.tag_name + "," %>
+		<% end %>
+	</div>
 
 	<h3><%=@question.answers.count %> answers</h3>
+	                       <hr>
 	<% @question.answers.each do |answer| %>
 		<div class="answer">
+			<p>Points: <%=answer.total_points%></p>
 			<p><%=answer.body%></p>
-			<p><%=answer.user.name%></p>
+			<p>Answered by <%=answer.user.username%>.</p>
+			                   <hr>
 		</div>
 	<% end %>
 </section>
