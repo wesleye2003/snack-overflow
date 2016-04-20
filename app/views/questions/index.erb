@@ -1,7 +1,16 @@
 THESE ARE QUESTIONS
 <section class="container">
   <% @questions.each do |question| %>
-    <p><a href="/questions/<%= question.id %>"><%= question.title %></a><p>
+    <p>
+      <span class="answer-count">
+        Answers: <%= question.answers.count %>
+      </span>
+      <span class="points-container">
+        Votes: <%= question.total_points %>
+      </span>
+      <a href="/questions/<%= question.id %>">
+        <%= question.title %></a>
+    <p>
   <% end %>
 
 </section>
