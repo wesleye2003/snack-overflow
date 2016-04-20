@@ -10,6 +10,9 @@ THESE ARE QUESTIONS
       </span>
       <a href="/questions/<%= question.id %>">
         <%= question.title %></a>
+      <span class="created-by-tag">
+        Created by:<a href="/users/<%= question.user_id %>"><%= question.user.username %></a>
+      </span>
     <p>
   <% end %>
 
