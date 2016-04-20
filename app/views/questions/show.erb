@@ -1,0 +1,14 @@
+<section>
+	<h2><%= @question.title %></h2>
+	<h2>By <%= @question.user.name %></h2>
+
+	<blockquote><%= @question.body %></blockquote>
+
+	<h3><%=@question.answers.count %> answers</h3>
+	<% @question.answers.each do |answer| %>
+		<div class="answer">
+			<p><%=answer.body%></p>
+			<p><%=answer.user.name%></p>
+		</div>
+	<% end %>
+</section>
