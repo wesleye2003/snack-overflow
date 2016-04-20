@@ -5,7 +5,7 @@
   <ul class="recent_answers">
     <% @answers.each do |answer| %>
       <li class="answer_body"><a href="/questions/<%=answer.question.id%>"><%=answer.body%></a></li>
-      <li class="answer_data"><%="Points: #{answer.votes.count} | answered on #{answer.created_at} for <span><a href='/questions/#{answer.question.id}'>#{answer.question.title}</a></span>" %></li>
+      <li class="answer_data"><%="Points: #{answer.total_points} | answered on #{answer.created_at} for <span><a href='/questions/#{answer.question.id}'>#{answer.question.title}</a></span>" %></li>
     <%end%>
   </ul>
   <h5><a href="/users/<%=@user.id%>/answers">View more answers by <%=@user.username%></a></h5>
