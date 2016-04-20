@@ -25,7 +25,7 @@
 		<div class="answer">
 			<p>Points: <%=answer.total_points%></p>
 			<p><%=answer.body%></p>
-			<p>Answered by <%=answer.user.username%>.</p>
+			<p>Answered by <a href="/users/<%=answer.user.id%>"><%=answer.user.username%></a>.</p>
 			                   <hr>
 		</div>
 	<% end %>
