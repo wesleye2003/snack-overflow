@@ -7,5 +7,9 @@ class Question < ActiveRecord::Base
 	has_many :answers
 
   validates :title, :body, :user_id, presence: true
+
+  def total_points
+  	self.votes.sum(:value)
+  end
   ###########METHOD TO DETERMINE PRIMARY TAGGING?################ 
 end
