@@ -14,7 +14,8 @@
 
 	<div class="tags">
 		Tags: <% @question.tags.each do |tag| %>
-			<%= tag.tag_name + "," %>
+			<%= tag.tag_name + "," unless tag == @question.tags.last %>
+			<%= tag.tag_name if tag == @question.tags.last %>
 		<% end %>
 	</div>
 
