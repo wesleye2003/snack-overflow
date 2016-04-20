@@ -21,16 +21,25 @@
 </head>
 <body>
 <div id="content">
-  <header>
-    <a href="/"><img src="/img/zenchinese.png" class="logo"></a>
+    <header class="header-container">
+    <a href="/"><img src="https://stevenanichols.files.wordpress.com/2015/02/donut.jpg" class="logo"></a>
+      <h1 class="header-title">Snack Overflow</h1>
     <div id="login-toolbar">
       <% if current_user %>
+        <a href="/users/<%= current_user.id %>">Profile</a>
         <a href="/logout">Logout</a>
       <% else %>
+        <a href="/users/new">Register</a>
         <a href="/login">Login</a>
       <% end %>
+    </div>
+      <div class="search-bar">
+        <form action="/search" method="get">
+          <input type="text" name="query"/><br />
+          <input type="submit" value="Search"/>
+        </form>
+      </div>
   </header>
-  <%= yield %>
-</div>
+    <%= yield %>
 </body>
 </html>
