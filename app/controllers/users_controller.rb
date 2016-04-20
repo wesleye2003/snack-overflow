@@ -15,3 +15,11 @@ get "/users/:id" do
   @recent_answers = @user.answers.all.order(created_at: :desc).limit(3)
   erb :'users/profile'
 end
+
+get "/users/:id/questions" do
+
+end
+
+get "/users/:id/answers" do
+
+end
