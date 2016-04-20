@@ -86,3 +86,8 @@ code {
 .answer_data span {
     font-style: italic;
 }
+.tags1 {
+    background-color: #72C1DB;
+    padding-left: 2px;
+    padding-right: 2px;
+}
