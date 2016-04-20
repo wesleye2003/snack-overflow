@@ -47,9 +47,13 @@
 		</div>
 	<% end %>
 
-  <%if current_user%>
-  	<% if current_user %>
-			<a href="/questions/<%=@question.id%>/answers/new">Answer this question</a>
+  <% if current_user %>
+  	<%if current_user != @question.user %>
+  		<form action="/questions/<%=@question.id%>/answers" method='post' id="new_answer">
+				<h2>Your Answer</h2>
+				<textarea cols="50" rows="5" name="body" form="new_answer">Enter answer text here...</textarea>
+  			<input type='submit' value='Post Your Answer'>
+			</form>
 		<% end %>
   <% end %>
 </section>

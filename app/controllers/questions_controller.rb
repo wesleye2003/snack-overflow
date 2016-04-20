@@ -7,7 +7,7 @@ get "/questions/new" do
 	erb :"questions/new"
 end
 
-post "/questions" do 
+post "/questions" do
 	question = Question.new({
 		title: params[:title],
 		body: params[:body],
@@ -20,7 +20,15 @@ post "/questions" do
 		@errors = question.errors.full_messages
 		erb :"questions/new"
 	end
+end
 
+post "/questions/:id/answers" do
+   @question = Question.find(params[:id])
+   @question.answers.create({
+    body: params[:body],
+    user_id: current_user.id
+    })
+  redirect "/questions/#{@question.id}"
 end
 
 get '/questions/:id' do
