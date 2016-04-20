@@ -6,9 +6,6 @@ class Answer < ActiveRecord::Base
   validates :body, :user_id, :question_id, presence: true
 
   def total_points
-  	votes = self.votes.to_a
-  	total = 0
-  	votes.each { |vote| total += vote.value }
-  	return total
+  	self.votes.sum(:value)
   end
 end
