@@ -1,3 +1,3 @@
 class Answer < ActiveRecord::Base
-  # Remember to create a migration!
+  validates :body, :user_id, :question_id, presence: true
 end
