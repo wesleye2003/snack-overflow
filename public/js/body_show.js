@@ -7,4 +7,5 @@ $(document).ready(function() {
     var body = $(this).parent().find('.qbody');
     body.toggleClass('hidden');
   });
+
 });
