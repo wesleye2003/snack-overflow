@@ -8,8 +8,41 @@ $(document).ready(function() {
     body.toggleClass('hidden');
   });
 
-  // $('#profile_name').mouseover(function(){
-  //   // $(this).append( $('<img src="http://i.imgur.com/zvQtwAM.png")>');
-  //   $(this).css('color', 'green')
-  // });
+  $('.a-comment').on('click', function(event){
+    event.preventDefault();
+    var form = $(this).next();
+    form.toggleClass('hidden');
+  });
+
+  $('.answer-comments').on('submit', '.comment-form', function(e){
+    e.preventDefault();
+    var form = $(this);
+    var comment = $(this).serialize();
+    var link = $(this).prev().attr('href');
+    $.ajax({
+      type: 'POST',
+      url: link,
+      data: comment,
+      success: function(response){
+        form.toggleClass('hidden');
+        $('.answer-comments').prepend(response);
+      }
+    });
+  });
+
+  $('.question-comments').on('submit', '.comment-form', function(e){
+    e.preventDefault();
+    var form = $(this);
+    var comment = $(this).serialize();
+    var link = $(this).prev().attr('href');
+    $.ajax({
+      type: 'POST',
+      url: link,
+      data: comment,
+      success: function(response){
+        form.toggleClass('hidden');
+        $('.answer-comments').prepend(response);
+      }
+    });
+
 });
