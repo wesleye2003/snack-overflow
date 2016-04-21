@@ -1,13 +1,15 @@
-THESE ARE QUESTIONS
+<h3>Forum Questions</h3>
 <section class="container">
   <% @questions.each do |question| %>
-    <p class ="post">
+    <div class ="post">
+      <div class="scores">
       <span class="answer-count">
         Answers: <%= question.answers.count %>
       </span>
       <span class="points-container">
         Points: <%= question.total_points %>
       </span>
+    </div>
       <a class="question-title" href="/questions/<%= question.id %>">
         <%= question.title %></a>
       <span class="hidden qbody">Details:  <%=question.body%></span>
@@ -17,9 +19,8 @@ THESE ARE QUESTIONS
       <p class="tag1">Tags: <% question.tags.each do |tag| %>
       <span class="tags1"><a href="/search?query=<%=tag.tag_name%>"><%= tag.tag_name + "," unless tag == question.tags.last %></a></span>
       <span class="tags1"><a href="/search?query=<%=tag.tag_name%>"><%= tag.tag_name if tag == question.tags.last %></a></span>
-      <%end%>
       </p>
-    </p>
+      <%end%>
+    </div>
   <% end %>
-
 </section>

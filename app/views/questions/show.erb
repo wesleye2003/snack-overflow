@@ -1,10 +1,10 @@
-<section>
-
+<section class="qpage">
+	<div class="page-info">
 	<h2 class="page-title"><%= @question.title %></h2>
 
 	<h2 class="author">By <a href="/users/<%= @question.user.id%>"><%= @question.user.username %></a></h2>
+</div>
 
-	
 
 	<div class="voting">
 		<form class="question-up" action="/questions/<%=@question.id%>/upvote" method="post">

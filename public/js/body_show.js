@@ -8,4 +8,8 @@ $(document).ready(function() {
     body.toggleClass('hidden');
   });
 
+  // $('#profile_name').mouseover(function(){
+  //   // $(this).append( $('<img src="http://i.imgur.com/zvQtwAM.png")>');
+  //   $(this).css('color', 'green')
+  // });
 });
