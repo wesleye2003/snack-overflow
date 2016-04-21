@@ -28,7 +28,15 @@
 	</div>
 
 	<div class="question-comments">
+		<p> Comments:</p>
+		<% @question.responses.each do |response| %>
+		<div class='comments'>
+			<p><%= response.body%></p>
+			<p class="author">By <%=response.user.username%> on <%=response.created_at%></p>
+		</div>
+		<% end %>
 		<a href="/questions/<%=@question.id%>/responses/new">Add a comment</a>
+
 	</div>
 
 	<div class="edit">
@@ -45,7 +53,7 @@
   	<input type='submit' value='Post Your Answer'>
 	</form>
 		                       <hr>
-<div class="answer_section">		                       
+<div class="answer_section">
 	<% @question.answers.each do |answer| %>
 		<div class="answer">
 			<div class="voting">
@@ -60,7 +68,18 @@
 			<blockquote><%=answer.body%></blockquote>
 			<p class="author">Answered by <a href="/users/<%=answer.user.id%>"><%=answer.user.username%></a>.</p>
 			<div class="answer-comments">
-				<a href="/answers/<%=answer.id%>/responses/new">Add a comment</a>
+				<p> Comments:</p>
+					<% answer.responses.reverse.each do |response| %>
+					<div class='comments'>
+						<p><%= response.body%></p>
+						<p class="author">By <%=response.user.username%> on <%=response.created_at%></p>
+					</div>
+					<%end%>
+				<a class="a-comment" href="/answers/<%=answer.id%>/responses/new">Add a comment</a>
+				<form class="comment-form hidden" action="/answers/<%=answer.id%>/responses/new" method='post'>
+            <input type='text' placeholder="Comment" name='comment'>
+            <input type='submit' value="Post Comment">
+          </form>
 			</div>
 			                   <hr>
 		</div>
