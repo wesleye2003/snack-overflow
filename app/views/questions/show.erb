@@ -4,8 +4,16 @@
 
 	<h2 class="author">By <a href="/users/<%= @question.user.id%>"><%= @question.user.username %></a></h2>
 
-	<div class="points">
-		Points: <%=@question.total_points%>
+	
+
+	<div class="voting">
+		<form action="/questions/<%=@question.id%>/upvote" method="post">
+    	<button name="up" value="upvote"><img src="/img/upvote_donut.png" class="logo"></button>
+		</form>
+		<span class="points"><%=@question.total_points%></span>
+		<form action="/questions/<%=@question.id%>/downvote" method="post">
+    	<button name="down" value="downvote"><img src="/img/downvote_donut.png" class="logo"></button>
+		</form>
 	</div>
 
 	<blockquote>
@@ -35,7 +43,15 @@
 	                       <hr>
 	<% @question.answers.each do |answer| %>
 		<div class="answer">
-			<p>Points: <%=answer.total_points%></p>
+			<div class="voting">
+				<form action="/answers/<%=answer.id%>/upvote" method="post">
+    			<button name="up" value="upvote"><img src="/img/upvote_donut.png" class="logo"></button>
+				</form>
+				<span class="points"><%=answer.total_points%></span>
+				<form action="/answers/<%=answer.id%>/downvote" method="post">
+		    	<button name="down" value="downvote"><img src="/img/downvote_donut.png" class="logo"></button>
+				</form>
+			</div>
 			<blockquote><%=answer.body%></blockquote>
 			<p class="author">Answered by <a href="/users/<%=answer.user.id%>"><%=answer.user.username%></a>.</p>
 			<div class="answer-comments">
