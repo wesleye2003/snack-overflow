@@ -90,8 +90,13 @@ code {
     background-color: #72C1DB;
     padding-left: 2px;
     padding-right: 2px;
+
 }
 .tags1 a {
     text-decoration: none;
     color: black;
+}
+.qbody {
+    font-size: .6em;
+    font-style: italic;
 }
