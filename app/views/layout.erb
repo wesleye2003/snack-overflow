@@ -32,10 +32,17 @@
       <% else %>
         <a href="/users/new">Register</a>
         <a href="/login">Login</a>
+        <div class="hidden">
+          <form id="login" action="/login" method='post' display>
+            Username: <input type='text' name='username'>
+            Password: <input type='password' name='password'>
+            <input type='submit'>
+          </form>
+        </div>
       <% end %>
     </div>
       <div class="search-bar">
-        <form action="/search" method="post">
+        <form action="/search" method="get">
           <input type="text" name="query"/><br />
           <input type="submit" value="Search"/>
         </form>

@@ -421,3 +421,8 @@ td,
 th {
   padding: 0;
 }
+
+
+div .hidden {
+  display: none;
+}
