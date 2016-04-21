@@ -1,8 +1,9 @@
 post "/questions/:id/upvote" do
 	question = Question.find(params[:id])
-	if request.xhr? && current_user
+	if current_user == question.user && request.xhr? 
 		question.votes.create(value: 1, user_id: current_user.id)
-		question.total_points.to_s
+		content_type :json
+		{data_id: question.id, point_value: question.total_points }.to_json
 	elsif current_user
 		question.votes.create(value: 1, user_id: current_user.id)
 		redirect "/questions/#{question.id}"
@@ -13,9 +14,10 @@ end
 
 post "/questions/:id/downvote" do 
 	question = Question.find(params[:id])
-	if request.xhr? && current_user
+	if request.xhr? && current_user == question.user
 		question.votes.create(value: -1, user_id: current_user.id)
-		return question.total_points.to_s
+		content_type :json
+		{data_id: question.id, point_value: question.total_points }.to_json
 	elsif current_user
 		question.votes.create(value: -1, user_id: current_user.id)
 		redirect "/questions/#{question.id}"
