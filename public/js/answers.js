@@ -18,6 +18,10 @@ $(document).ready(function() {
 			$('.answer_section').prepend(data);
 			$('a.answer-link').show();
 			$('.answer-form').toggleClass('hidden');
-		})
+		});
+		linkrequest.fail(function(){
+			$('.errors').remove();
+      $('.answer-form').prepend("<span class='errors'>You entered the wrong info.</span>");
+		});
 	});
 });

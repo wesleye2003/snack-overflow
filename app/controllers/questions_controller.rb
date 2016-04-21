@@ -53,19 +53,20 @@ end
 post "/questions/:id/answers" do
 	if current_user
     @question = Question.find(params[:id])
-    if request.xhr?
-    	answer = @question.answers.create({
+    answer = @question.answers.new({
 	    	body: params[:body],
 	    	user_id: current_user.id
 	    })
+    if request.xhr? && answer.save
+    	status 200
     	erb :'questions/_answer', locals: {answer: answer}, layout: false
+    elsif request.xhr?
+    	status 400
     else
-	    @question.answers.create({
-	    	body: params[:body],
-	    	user_id: current_user.id
-	    })
-	  	redirect "/questions/#{@question.id}"
+    	redirect "/questions/#{@question.id}"
 	  end
+	elsif request.xhr?
+    	status 400
   else
   	redirect "/"
   end
