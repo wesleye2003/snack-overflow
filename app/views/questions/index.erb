@@ -1,16 +1,16 @@
 THESE ARE QUESTIONS
 <section class="container">
   <% @questions.each do |question| %>
-    <p>
+    <p class ="post">
       <span class="answer-count">
         Answers: <%= question.answers.count %>
       </span>
       <span class="points-container">
         Points: <%= question.total_points %>
       </span>
-      <a href="/questions/<%= question.id %>">
+      <a class="question-title" href="/questions/<%= question.id %>">
         <%= question.title %></a>
-        <p class="qbody hidden"><%=question.body%></p>
+      <span class="hidden qbody">Details:  <%=question.body%></span>
       <span class="created-by-tag">
         Created by:<a href="/users/<%= question.user_id %>"><%= question.user.username %></a>
       </span>
@@ -18,8 +18,8 @@ THESE ARE QUESTIONS
       <span class="tags1"><a href="/search?query=<%=tag.tag_name%>"><%= tag.tag_name + "," unless tag == question.tags.last %></a></span>
       <span class="tags1"><a href="/search?query=<%=tag.tag_name%>"><%= tag.tag_name if tag == question.tags.last %></a></span>
       <%end%>
+      </p>
     </p>
-    <p>
   <% end %>
 
 </section>
