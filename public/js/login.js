@@ -8,20 +8,16 @@ $(document).ready(function () {
   $('#login-toolbar').on('submit', '#login', function(e){
     e.preventDefault();
     var login_data = $(this).serialize();
-  $.ajax({
-  type: 'POST',
-  url: '/login',
-  data: login_data,
-    success: function(data)
-        {
-          if (data === 'Login') {
-            $('.user-links').remove()
-            $()
-          }
-          else {
-            alert('Invalid Credentials');
-          }
-       }
-   });
- });
+    var login_field = $(this)
+    $.ajax({
+    type: 'POST',
+    url: '/login',
+    data: login_data,
+      success: function(data){
+        login_field.toggleClass('hidden')
+        $('.register').remove();
+        $('#login-toolbar').append(data);
+      }
+    });
+  });
 });
