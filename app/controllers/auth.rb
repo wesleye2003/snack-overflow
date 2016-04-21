@@ -7,10 +7,9 @@ get '/login' do
 end
 
 post '/login' do
-  p params[:username]
-  user = User.find_by(username: params[:username])
-  user = user.authenticate(params[:password]) if user
-  if user
+  result = User.find_by(username: params[:username])
+  user = result.authenticate(params[:password]) if result != nil
+  if user != nil
 		session[:user_id] = user.id
     if request.xhr?
       erb :'users/_login', locals: {user: user}, layout: false
@@ -18,8 +17,12 @@ post '/login' do
    	 redirect "/"
     end
 	else
-		@errors = ["Password/email combination is incorrect"]
-		erb :login
+    if request.xhr?
+      400
+    else
+     @errors = ["Password/email combination is incorrect"]
+      erb :login
+    end
   end
 end
 
