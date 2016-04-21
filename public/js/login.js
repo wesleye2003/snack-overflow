@@ -17,6 +17,10 @@ $(document).ready(function () {
         login_field.toggleClass('hidden')
         $('.register').remove();
         $('#login-toolbar').append(data);
+      },
+      error: function(){
+        $('.errors').remove();
+        $('#login').prepend("<span class='errors'>You entered the wrong info.</span>");
       }
     });
   });

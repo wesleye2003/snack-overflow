@@ -16,10 +16,10 @@
       <span class="created-by-tag">
         Created by:<a href="/users/<%= question.user_id %>"><%= question.user.username %></a>
       </span>
-      <p class="tag1">Tags: <% question.tags.each do |tag| %>
-      <span class="tags1"><a href="/search?query=<%=tag.tag_name%>"><%= tag.tag_name + "," unless tag == question.tags.last %></a></span>
-      <span class="tags1"><a href="/search?query=<%=tag.tag_name%>"><%= tag.tag_name if tag == question.tags.last %></a></span>
-      </p>
+      <span class="tag1">Tags: <% question.tags.each do |tag| %>
+        <span class="tags1"><a href="/search?query=<%=tag.tag_name%>"><%= tag.tag_name + "," unless tag == question.tags.last %></a></span>
+        <span class="tags1"><a href="/search?query=<%=tag.tag_name%>"><%= tag.tag_name if tag == question.tags.last %></a></span>
+      </span>
       <%end%>
     </div>
   <% end %>

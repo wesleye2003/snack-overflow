@@ -149,8 +149,8 @@ code {
 }
 .search-bar {
     position: absolute;
-    top: 0;
-    left: 5%;
+    top: 0.5em;
+    left: 2%;
 }
 #profile_name a {
     text-decoration: none;
@@ -199,7 +199,8 @@ code {
 #login-toolbar {
     position: absolute;
     top: 0;
-    right: 10%;
+    right: 2%;
+    text-align: right;
 }
 
 form .question-up, .question-down, .answer-up, .answer-down,  {
@@ -218,7 +219,14 @@ form .question-up, .question-down, .answer-up, .answer-down,  {
     color: pink;
     font-size: 2em;
 }
-.comment-form input {
+
+#login {
+    position: absolute;
+    top: 3em;
+    right: -0.5em;
 }
 
+.qpage h2 {
+    text-align: center;
+}
 /*I hope this is ok*/
