@@ -6,8 +6,8 @@
     <% @recent_questions.each do |question| %>
       <li class="question_title"><a href="/questions/<%=question.id%>"><%=question.title%></a></li>
       <li class="question_data"><%="Points: #{question.total_points} | created on #{question.created_at} " %> Tags: <% question.tags.each do |tag| %>
-      <span class="tags1"><a href="/tags/<%=tag.id%>/questions"><%= tag.tag_name + "," unless tag == question.tags.last %></a></span>
-      <span class="tags1"><a href="/tags/<%=tag.id%>/questions"><%= tag.tag_name if tag == question.tags.last %></a></span>
+      <span class="tags1"><a href="/search?query=<%=tag.tag_name%>"><%= tag.tag_name + "," unless tag == question.tags.last %></a></span>
+      <span class="tags1"><a href="/search?query=<%=tag.tag_name%>"><%= tag.tag_name if tag == question.tags.last %></a></span>
     <% end %></li>
     <%end%>
   </ul>
