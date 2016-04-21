@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  $('.voting').on('submit', 'form.question-up', function(e){
+  $('.answer_section').on('submit', 'form.question-up', function(e){
   	e.preventDefault();
   	var $url = $(this).attr('action');
   	var request = $.post($url, function(point_data){
@@ -7,7 +7,7 @@ $(document).ready(function() {
     });
   });
 
-  $('.voting').on('submit', 'form.question-down', function(e){
+  $('.answer_section').on('submit', 'form.question-down', function(e){
   	e.preventDefault();
   	var $url = $(this).attr('action');
   	var request = $.post($url, function(point_data){
@@ -15,7 +15,7 @@ $(document).ready(function() {
     });
   });
 
-  $('.voting').on('submit', 'form.answer-up', function(e){
+  $('.answer_section').on('submit', 'form.answer-up', function(e){
   	e.preventDefault();
   	var $url = $(this).attr('action');
   	var request = $.post($url, function(point_data){
@@ -23,7 +23,7 @@ $(document).ready(function() {
   	});
   });
 
-  $('.voting').on('submit', 'form.answer-down', function(e){
+  $('.answer_section').on('submit', 'form.answer-down', function(e){
   	e.preventDefault();
   	var $url = $(this).attr('action');
   	var request = $.post($url, function(point_data){

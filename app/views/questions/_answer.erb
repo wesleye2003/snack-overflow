@@ -1,0 +1,17 @@
+<div class="answer">
+	<div class="voting">
+		<form class="answer-up" action="/answers/<%=answer.id%>/upvote" method="post">
+			<button name="up" value="upvote"><img src="/img/upvote_donut.png" class="logo"></button>
+		</form>
+		<span class="a-points" id="<%= answer.id%>" ><%=answer.total_points%></span>
+		<form class="answer-down" action="/answers/<%=answer.id%>/downvote" method="post">
+    	<button name="down" value="downvote"><img src="/img/downvote_donut.png" class="logo"></button>
+		</form>
+	</div>
+	<blockquote><%=answer.body%></blockquote>
+		<p class="author">Answered by <a href="/users/<%=answer.user.id%>"><%=answer.user.username%></a>.</p>
+	<div class="answer-comments">
+		<a href="/answers/<%=answer.id%>/responses/new">Add a comment</a>
+	</div>
+	                   <hr>
+</div>

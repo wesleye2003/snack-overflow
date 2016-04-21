@@ -37,6 +37,15 @@
 
 	<h3><%=@question.answers.count %> answers</h3>
 	                       <hr>
+	<a href="/answers/new" class="answer-link">Add an answer</a>
+
+  <form class="hidden answer-form" action="/questions/<%=@question.id%>/answers" method='post' id="new_answer">
+		<h2>Your Answer</h2>
+		<textarea cols="50" rows="5" name="body" form="new_answer" placeholder="Enter answer text here..."></textarea>
+  	<input type='submit' value='Post Your Answer'>
+	</form>
+		                       <hr>
+<div class="answer_section">		                       
 	<% @question.answers.each do |answer| %>
 		<div class="answer">
 			<div class="voting">
@@ -56,10 +65,5 @@
 			                   <hr>
 		</div>
 	<% end %>
-
-  <form action="/questions/<%=@question.id%>/answers" method='post' id="new_answer">
-		<h2>Your Answer</h2>
-		<textarea cols="50" rows="5" name="body" form="new_answer">Enter answer text here...</textarea>
-  	<input type='submit' value='Post Your Answer'>
-	</form>
+</div>
 </section>
