@@ -91,3 +91,7 @@ code {
     padding-left: 2px;
     padding-right: 2px;
 }
+.tags1 a {
+    text-decoration: none;
+    color: black;
+}
