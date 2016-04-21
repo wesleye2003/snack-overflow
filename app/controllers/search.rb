@@ -1,4 +1,4 @@
-post '/search'  do
+get '/search'  do
   @search_item = params[:query]
   @questions = []
   tag = Tag.find_by(tag_name: @search_item)

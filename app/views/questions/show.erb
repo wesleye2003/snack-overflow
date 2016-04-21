@@ -14,8 +14,8 @@
 
 	<div class="tags">
 		Tags: <% @question.tags.each do |tag| %>
-			<%= "<a href='/tags/#{tag.id}/questions'>#{tag.tag_name}</a>" + "," unless tag == @question.tags.last %>
-			<%= "<a href='/tags/#{tag.id}/questions'>#{tag.tag_name}</a>" if tag == @question.tags.last %>
+			<%= "<a href='/search?query=#{tag.tag_name}'>#{tag.tag_name}</a>" + "," unless tag == @question.tags.last %>
+			<%= "<a href='/search?query=#{tag.tag_name}'>#{tag.tag_name}</a>" if tag == @question.tags.last %>
 		<% end %>
 	</div>
 
