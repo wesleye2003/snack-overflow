@@ -7,11 +7,11 @@
 	
 
 	<div class="voting">
-		<form action="/questions/<%=@question.id%>/upvote" method="post">
+		<form class="question-up" action="/questions/<%=@question.id%>/upvote" method="post">
     	<button name="up" value="upvote"><img src="/img/upvote_donut.png" class="logo"></button>
 		</form>
-		<span class="points"><%=@question.total_points%></span>
-		<form action="/questions/<%=@question.id%>/downvote" method="post">
+		<span class="q-points"><%=@question.total_points%></span>
+		<form class="question-down" action="/questions/<%=@question.id%>/downvote" method="post">
     	<button name="down" value="downvote"><img src="/img/downvote_donut.png" class="logo"></button>
 		</form>
 	</div>
@@ -44,11 +44,11 @@
 	<% @question.answers.each do |answer| %>
 		<div class="answer">
 			<div class="voting">
-				<form action="/answers/<%=answer.id%>/upvote" method="post">
+				<form class="answer-up" action="/answers/<%=answer.id%>/upvote" method="post">
     			<button name="up" value="upvote"><img src="/img/upvote_donut.png" class="logo"></button>
 				</form>
-				<span class="points"><%=answer.total_points%></span>
-				<form action="/answers/<%=answer.id%>/downvote" method="post">
+				<span class="a-points" id="<%= answer.id%>" ><%=answer.total_points%></span>
+				<form class="answer-down" action="/answers/<%=answer.id%>/downvote" method="post">
 		    	<button name="down" value="downvote"><img src="/img/downvote_donut.png" class="logo"></button>
 				</form>
 			</div>
