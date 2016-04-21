@@ -4,27 +4,36 @@ get "/questions" do
 end
 
 get "/questions/new" do
-	erb :"questions/new"
+	if current_user
+		erb :"questions/new"
+	else
+		@errors = ["You must be logged in to use this feature."]
+		erb :login
+	end
 end
 
 post "/questions" do
-	question = Question.new({
-		title: params[:title],
-		body: params[:body],
-		user_id: current_user.id
-		})
-	if question.save
-		question.add_tags(params[:tags])
-		redirect "/questions/#{question.id}"
+	if current_user
+		question = Question.new({
+			title: params[:title],
+			body: params[:body],
+			user_id: current_user.id
+			})
+		if question.save
+			question.add_tags(params[:tags])
+			redirect "/questions/#{question.id}"
+		else
+			@errors = question.errors.full_messages
+			erb :"questions/new"
+		end
 	else
-		@errors = question.errors.full_messages
-		erb :"questions/new"
+		redirect "/questions"
 	end
 end
 
 get "/questions/:id/edit" do
 	@question = Question.find(params[:id])
-	if current_user == @question.user
+	if current_user && current_user == @question.user
 		erb :"questions/edit"
 	else
 		redirect "/"
@@ -42,12 +51,16 @@ put "/questions/:id" do
 end
 
 post "/questions/:id/answers" do
-   @question = Question.find(params[:id])
-   @question.answers.create({
-    body: params[:body],
-    user_id: current_user.id
+	if current_user
+    @question = Question.find(params[:id])
+    @question.answers.create({
+    	body: params[:body],
+    	user_id: current_user.id
     })
-  redirect "/questions/#{@question.id}"
+  	redirect "/questions/#{@question.id}"
+  else
+  	redirect "/"
+  end
 end
 
 get '/questions/:id' do
