@@ -24,20 +24,24 @@
 <div id="content">
     <header class="header-container">
     <a href="/"><img src="https://stevenanichols.files.wordpress.com/2015/02/donut.jpg" class="logo"></a>
-      <h1 class="header-title">Snack Overflow</h1>
+      <h1 class="header-title"><a href="/">Snack Overflow</a></h1>
     <div id="login-toolbar">
       <% if current_user %>
         <a href="/users/<%= current_user.id %>"><%= current_user.username %></a>
         <a href="/logout">Logout</a>
         <a href="/questions/new">Ask Question</a>
       <% else %>
+      <div class="user-links">
         <a href="/users/new">Register</a>
-        <a href="/login">Login</a>
+        <div class="login-link">
+          <a href="/login">Login</a>
+        </div>
+      </div>
         <div class="hidden">
           <form id="login" action="/login" method='post' display>
-            Username: <input type='text' name='username'>
-            Password: <input type='password' name='password'>
-            <input type='submit'>
+            <input type='text' placeholder="Username" name='username'>
+            <input type='password' placeholder="Password" name='password'>
+            <input type='submit' value="Login">
           </form>
         </div>
       <% end %>

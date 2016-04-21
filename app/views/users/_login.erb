@@ -1,8 +1,2 @@
-<a href="/users/new">Register</a>
-  <a class="login-link" href="/login">Login</a>
-   <div class="hidden">
-     <form id="login" action="/login" method='post' display>
-      <input type='text' placeholder="Username" name='username'>
-      <input type='password' placeholder="Password" name='password'>
-      <input type='submit'>
-  </form>
+<a href="/users/<%= current_user.id %>"><%= current_user.username %></a>
+<a href="/logout">Logout</a>

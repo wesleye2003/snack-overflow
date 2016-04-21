@@ -10,7 +10,7 @@ post '/login' do
     user = User.find_by(username: params[:username])
     user = user.authenticate(params[:password]) if user
   if request.xhr?
-    erb :_login, locals: {user: user}, layout: false
+    erb :'users/_login', locals: {current_user: current_user}, layout: false
   else
   	if user
   		session[:user_id] = user.id
