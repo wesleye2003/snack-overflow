@@ -13,5 +13,6 @@ get '/search'  do
   else
     @questions = []
   end
+  @questions.uniq!
   erb :'search/results'
 end
