@@ -1,5 +1,5 @@
 get "/questions" do
-  @questions = Question.order(created_at: :desc)
+  @questions = Question.order(created_at: :desc).limit(20)
   erb :'questions/index'
 end
 
