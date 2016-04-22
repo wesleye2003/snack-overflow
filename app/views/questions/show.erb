@@ -27,16 +27,19 @@
 		<% end %>
 	</div>
 
+		<p class="comment-title"> Comments:</p>
 	<div class="question-comments">
-		<p> Comments:</p>
-		<% @question.responses.each do |response| %>
-		<div class='comments'>
+		<% @question.responses.reverse.each do |response| %>
+		<div class='comments post'>
 			<p><%= response.body%></p>
 			<p class="author">By <%=response.user.username%> on <%=response.created_at%></p>
 		</div>
 		<% end %>
-		<a href="/questions/<%=@question.id%>/responses/new">Add a comment</a>
-
+		<a class="q-comment" href="/questions/<%=@question.id%>/responses/new">Add a comment</a>
+		<form class="comment-form hidden" action="/questions/<%=@question.id%>/responses/new" method='post'>
+            <input type='text' placeholder="Comment" name='comment'>
+            <input type='submit' value="Post Comment">
+          </form>
 	</div>
 
 	<div class="edit">
@@ -68,9 +71,9 @@
 			<blockquote><%=answer.body%></blockquote>
 			<p class="author">Answered by <a href="/users/<%=answer.user.id%>"><%=answer.user.username%></a>.</p>
 			<div class="answer-comments">
-				<p> Comments:</p>
+				<p class="comment-title"> Comments:</p>
 					<% answer.responses.reverse.each do |response| %>
-					<div class='comments'>
+					<div class='comments post'>
 						<p><%= response.body%></p>
 						<p class="author">By <%=response.user.username%> on <%=response.created_at%></p>
 					</div>

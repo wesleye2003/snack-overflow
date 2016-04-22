@@ -26,8 +26,17 @@ $(document).ready(function() {
       success: function(response){
         form.toggleClass('hidden');
         $('.answer-comments').prepend(response);
+      },
+      error: function(){
+        alert("Comments cannot be blank and you must be logged in to comment.")
       }
     });
+  });
+
+  $('.q-comment').on('click', function(event){
+    event.preventDefault();
+    var form = $(this).next();
+    form.toggleClass('hidden');
   });
 
   $('.question-comments').on('submit', '.comment-form', function(e){
@@ -41,8 +50,11 @@ $(document).ready(function() {
       data: comment,
       success: function(response){
         form.toggleClass('hidden');
-        $('.answer-comments').prepend(response);
+        $('.question-comments').prepend(response);
+      },
+      error: function(){
+        alert("Comments cannot be blank and you must be logged in to comment.")
       }
     });
-
+  });
 });
