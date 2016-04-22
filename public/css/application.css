@@ -229,4 +229,8 @@ form .question-up, .question-down, .answer-up, .answer-down,  {
 .qpage h2 {
     text-align: center;
 }
+
+.comment-title {
+    color: white;
+}
 /*I hope this is ok*/
