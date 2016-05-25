@@ -49,8 +49,8 @@ tag_ids = Tag.all.pluck(:id)
 end
 
 400.times do
-  Response.find_or_create_by(body: Faker::Hacker.say_something_smart, user_id: users_ids.sample, respondable: questions.sample)
-  Response.find_or_create_by(body: Faker::Hacker.say_something_smart, user_id: users_ids.sample, respondable: answers.sample)
+  Response.find_or_create_by(body: Faker::Hacker.say_something_smart, user_id: rand(1..10), respondable: questions.sample)
+  Response.find_or_create_by(body: Faker::Hacker.say_something_smart, user_id: rand(1..10), respondable: answers.sample)
 end
 responses = Response.all.to_a
 
